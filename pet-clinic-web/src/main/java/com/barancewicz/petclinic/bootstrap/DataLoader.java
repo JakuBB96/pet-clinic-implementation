@@ -2,14 +2,13 @@ package com.barancewicz.petclinic.bootstrap;
 
 
 import com.barancewicz.petclinic.model.Owner;
+import com.barancewicz.petclinic.model.PetType;
 import com.barancewicz.petclinic.model.Vet;
 import com.barancewicz.petclinic.services.OwnerService;
+import com.barancewicz.petclinic.services.PetTypeService;
 import com.barancewicz.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-
-import java.security.PrivateKey;
 
 
 //implementing this interface is a spring-boot specific way
@@ -19,15 +18,23 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
-
-
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("dog");
+        PetType cat = new PetType();
+        cat.setName("cat");
+
+        PetType savedDogType = petTypeService.save(dog);
+        PetType savedCatType = petTypeService.save(cat);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
