@@ -1,28 +1,30 @@
 package com.barancewicz.petclinic.services.serviceMapImpl;
 
-import com.barancewicz.petclinic.model.Speciality;
-import com.barancewicz.petclinic.services.SpecialtiesService;
+import com.barancewicz.petclinic.model.Specialty;
+import com.barancewicz.petclinic.services.SpecialtyService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class SpecialtiesServiceMapImpl extends AbstractMapService<Speciality, Long> implements SpecialtiesService {
+@Service
+public class SpecialtiesServiceMapImpl extends AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
-    public Speciality findById(Long aLong) {
+    public Specialty findById(Long aLong) {
         return super.findById(aLong);
     }
 
     @Override
-    public Speciality save(Speciality object) {
+    public Specialty save(Specialty object) {
         return super.save(object);
     }
 
     @Override
-    public Set<Speciality> findAll() {
+    public Set<Specialty> findAll() {
         return super.findAll();
     }
 
     @Override
-    public void delete(Speciality object) {
+    public void delete(Specialty object) {
         super.delete(object);
     }
 
