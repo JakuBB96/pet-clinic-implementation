@@ -2,9 +2,10 @@ package com.barancewicz.petclinic.services.serviceMapImpl;
 
 import com.barancewicz.petclinic.model.PetType;
 import com.barancewicz.petclinic.services.PetTypeService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class PetTypeServiceMapImpl extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
     public PetType findById(Long id) {
@@ -13,7 +14,7 @@ public class PetTypeServiceMapImpl extends AbstractMapService<PetType, Long> imp
 
     @Override
     public PetType save(PetType object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override

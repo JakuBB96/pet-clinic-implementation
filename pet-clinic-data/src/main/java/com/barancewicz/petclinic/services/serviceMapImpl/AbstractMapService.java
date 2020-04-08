@@ -1,25 +1,32 @@
 package com.barancewicz.petclinic.services.serviceMapImpl;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.barancewicz.petclinic.model.BaseEntity;
 
-public abstract class AbstractMapService<T, ID> {
+import java.util.*;
 
-    protected Map<ID, T> map = new HashMap<>();
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+
+    protected Map<Long, T> map = new HashMap<>();
 
     T findById(ID id){
         return map.get(id);
     }
 
-    T save(ID id, T object){
-        map.put(id, object);
+    T save(T object){
+        if (object!=null){
+            if (object.getId() == null){
+                object.setId(getNextId());
+            }
+            map.put(object.getId(), object);
+        }
+        else {
+            throw new RuntimeException("Object cannot be null");
+        }
         return object;
     }
 
     Set<T> findAll(){
-        return new HashSet<T>();
+        return new HashSet<T>(map.values());
     }
 
     void delete (T object){
@@ -30,4 +37,13 @@ public abstract class AbstractMapService<T, ID> {
         map.remove(id);
     }
 
+    private Long getNextId(){
+        Long nextId = null;
+        try {
+            nextId =  Collections.max(map.keySet()) +1;
+        }catch (NoSuchElementException e){
+            nextId = 1L;
+        }
+               return nextId;
+    }
 }
