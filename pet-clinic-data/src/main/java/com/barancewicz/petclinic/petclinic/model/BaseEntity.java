@@ -1,6 +1,8 @@
 package com.barancewicz.petclinic.petclinic.model;
 
-public class BaseEntity {
+import java.io.Serializable;
+
+public class BaseEntity implements Serializable {
 
     private Long id;
 
