@@ -1,4 +1,4 @@
-package com.barancewicz.petclinic.petclinic.services;
+package com.barancewicz.petclinic.services;
 import java.util.Set;
 
 public interface CrudService<T, ID> {
