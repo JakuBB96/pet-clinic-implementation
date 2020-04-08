@@ -1,6 +1,8 @@
 package com.barancewicz.petclinic.petclinic.services;
 
-public interface PetTypeService {
+import com.barancewicz.petclinic.petclinic.model.PetType;
+
+public interface PetTypeService extends CrudService<PetType, Long> {
 
 
 
