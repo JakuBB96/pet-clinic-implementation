@@ -2,10 +2,7 @@ package com.barancewicz.petclinic.bootstrap;
 
 
 import com.barancewicz.petclinic.model.*;
-import com.barancewicz.petclinic.services.OwnerService;
-import com.barancewicz.petclinic.services.PetTypeService;
-import com.barancewicz.petclinic.services.SpecialtyService;
-import com.barancewicz.petclinic.services.VetService;
+import com.barancewicz.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,12 +18,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtiesService;
+    private final VisitService visitService;
+    private final PetService petService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtiesService, VisitService visitService, PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtiesService = specialtiesService;
+        this.visitService = visitService;
+        this.petService = petService;
     }
     @Override
     public void run(String... args) throws Exception {
@@ -59,7 +60,7 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setName("Rosco");
         mikesPet.setOwner(owner1);
         owner1.getPets().add(mikesPet);
-
+        petService.save(mikesPet);
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
@@ -75,9 +76,14 @@ public class DataLoader implements CommandLineRunner {
         fionasPet.setName("Just Cat");
         fionasPet.setOwner(owner2);
         owner1.getPets().add(mikesPet);
-
+        petService.save(fionasPet);
         ownerService.save(owner2);
 
+        Visit catVisit = new Visit();
+        catVisit.setPet(fionasPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+        visitService.save(catVisit);
 
         Specialty surgery = new Specialty();
         Specialty dentistry = new Specialty();

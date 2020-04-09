@@ -3,12 +3,15 @@ package com.barancewicz.petclinic.services.springdatajpa;
 import com.barancewicz.petclinic.model.Visit;
 import com.barancewicz.petclinic.repositories.VisitRepository;
 import com.barancewicz.petclinic.services.VisitService;
-import org.graalvm.compiler.nodes.calc.IntegerDivRemNode;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+@Service
+@Profile("springdatajpa")
 public class VisitServiceImpl implements VisitService {
 
     private final VisitRepository visitRepository;
