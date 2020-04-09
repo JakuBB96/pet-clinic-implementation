@@ -1,4 +1,4 @@
-package com.barancewicz.petclinic.services.serviceMapImpl;
+package com.barancewicz.petclinic.services.map;
 
 import com.barancewicz.petclinic.model.Owner;
 import com.barancewicz.petclinic.model.Pet;
@@ -22,11 +22,6 @@ public class OwnerServiceMapImpl extends AbstractMapService<Owner, Long> impleme
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
-    }
-
-    @Override
-    public Set<Owner> findAllByLastName(String lastName) {
         return null;
     }
 

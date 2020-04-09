@@ -1,4 +1,4 @@
-package com.barancewicz.petclinic.services.serviceMapImpl;
+package com.barancewicz.petclinic.services.map;
 
 import com.barancewicz.petclinic.model.PetType;
 import com.barancewicz.petclinic.services.PetTypeService;

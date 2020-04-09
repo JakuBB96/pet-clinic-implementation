@@ -1,4 +1,4 @@
-package com.barancewicz.petclinic.services.serviceMapImpl;
+package com.barancewicz.petclinic.services.map;
 
 import com.barancewicz.petclinic.model.Specialty;
 import com.barancewicz.petclinic.model.Vet;
