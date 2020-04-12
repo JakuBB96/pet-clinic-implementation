@@ -40,8 +40,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public Owner findById(Long aLong) {
-        Optional<Owner> ownerOptional = ownerRepository.findById(aLong);
-        return ownerOptional.orElse(null);
+        return ownerRepository.findById(aLong).orElse(null);
     }
 
     @Override
