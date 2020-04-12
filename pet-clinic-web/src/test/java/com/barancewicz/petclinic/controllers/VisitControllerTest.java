@@ -1,4 +1,9 @@
 package com.barancewicz.petclinic.controllers;
+
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import com.barancewicz.petclinic.model.Owner;
 import com.barancewicz.petclinic.model.Pet;
 import com.barancewicz.petclinic.model.PetType;
@@ -16,11 +21,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.util.UriTemplate;
 import java.net.URI;
 import java.time.LocalDate;
-import java.util.*;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 @ExtendWith(MockitoExtension.class)
 class VisitControllerTest {
@@ -90,7 +93,7 @@ class VisitControllerTest {
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .param("date","2018-11-11")
                 .param("description", YET_ANOTHER_VISIT_DESCRIPTION))
-                .andExpect(status().isOk())
+                .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("visit"))
         ;
     }
