@@ -2,8 +2,6 @@ package com.barancewicz.petclinic.controllers;
 
 import com.barancewicz.petclinic.model.Pet;
 import com.barancewicz.petclinic.model.Visit;
-import com.barancewicz.petclinic.repositories.PetRepository;
-import com.barancewicz.petclinic.repositories.VisitRepository;
 import com.barancewicz.petclinic.services.PetService;
 import com.barancewicz.petclinic.services.VisitService;
 import org.springframework.stereotype.Controller;
@@ -31,13 +29,7 @@ class VisitController {
         dataBinder.setDisallowedFields("id");
     }
 
-    /**
-     * Called before each and every @RequestMapping annotated method. 2 goals: - Make sure
-     * we always have fresh data - Since we do not use the session scope, make sure that
-     * Pet object always has an id (Even though id is not part of the form fields)
-     * @param petId
-     * @return Pet
-     */
+
     //runs with every request against this controller
     @ModelAttribute("visit")
     public Visit loadPetWithVisit(@PathVariable("petId") Long petId, Map<String, Object> model) {
