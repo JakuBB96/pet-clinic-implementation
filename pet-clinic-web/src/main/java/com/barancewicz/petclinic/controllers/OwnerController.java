@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
-
 @RequestMapping("/owners")
 @Controller
 public class OwnerController {
@@ -39,6 +38,7 @@ public class OwnerController {
         if (owner.getLastName() == null) {
             owner.setLastName(""); // empty string signifies broadest possible search
         }
+        System.out.println(owner.getLastName());
         List<Owner> results = ownerService.findAllByLastNameLike("%"+owner.getLastName()+"%");
         if (results.isEmpty()) {
             result.rejectValue("lastName", "notFound", "not found");

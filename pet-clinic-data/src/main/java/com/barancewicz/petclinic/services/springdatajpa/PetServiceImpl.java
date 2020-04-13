@@ -5,6 +5,7 @@ import com.barancewicz.petclinic.repositories.PetRepository;
 import com.barancewicz.petclinic.services.PetService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class PetServiceImpl implements PetService {
         Optional<Pet> petOptional = petRepository.findById(aLong);
         return petOptional.orElse(null);
     }
-
+    @Transactional
     @Override
     public Pet save(Pet object) {
         return petRepository.save(object);

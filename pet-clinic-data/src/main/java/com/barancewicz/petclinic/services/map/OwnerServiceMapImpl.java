@@ -8,8 +8,14 @@ import com.barancewicz.petclinic.services.PetTypeService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 @Profile({"default", "map"})
@@ -34,8 +40,11 @@ public class OwnerServiceMapImpl extends AbstractMapService<Owner, Long> impleme
 
     @Override
     public List<Owner> findAllByLastNameLike(String lastName) {
-        //todo
-        return null;
+
+        return this.findAll()
+                    .stream()
+                    .filter(owner -> lastName.replaceAll("%","").matches(owner.getLastName()))
+                    .collect(Collectors.toList());
     }
 
     @Override

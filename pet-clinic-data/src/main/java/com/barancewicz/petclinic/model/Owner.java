@@ -33,7 +33,7 @@ public class Owner extends Person {
     private String telephone;
 
     //if i delete owner, all pets are going to be deleted
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
 
     public Pet getPet(String name){
