@@ -1,5 +1,5 @@
 [![CircleCI](
-https://circleci.com/gh/JakuBB96/pet-clinic/tree/master.svg?style=svg)](https://circleci.com/gh/JakuBB96/pet-clinic/tree/master)
+https://circleci.com/gh/JakuBB96/pet-clinic-implementation/tree/master.svg?style=svg)](https://circleci.com/gh/JakuBB96/pet-clinic-implementation/tree/master)
 
 # pet-clinic-implementation
 
