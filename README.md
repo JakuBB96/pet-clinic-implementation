@@ -4,7 +4,7 @@ https://circleci.com/gh/JakuBB96/pet-clinic-implementation/tree/master.svg?style
 # pet-clinic-implementation
 
 
-Repository contains an opinionated version of the classic reference application - Spring Pet Clinic
+Repository contains an opinionated version of the classic reference application - [Spring Pet Clinic](https://github.com/spring-projects/spring-petclinic)
 
 It's a sample web application that I've created, based on one of my Spring Framework courses
 
